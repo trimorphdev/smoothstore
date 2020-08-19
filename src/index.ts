@@ -25,6 +25,9 @@ export class Datastore {
             this.path = path.join(this.path, scope + '.json');
         else
             this.path = path.join(this.path, '_default.json');
+    
+        if (!fs.existsSync(this.path))
+            fs.writeFileSync(this.path, '{}');
     }
 
     private callWatchers(key: string, value: string) {
