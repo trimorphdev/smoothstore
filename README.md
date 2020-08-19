@@ -1,19 +1,19 @@
-# EasyStore
+# SmoothStore
 An easy to use datastore framework for Node.js.
 
-## Why EasyStore?
-EasyStore is a super lightweight framework, meaning it has no dependencies and it's only composed of one JavaScript source file.  It's also cross platform!
+## Why SmoothStore?
+SmoothStore is a super lightweight framework, meaning it has no dependencies and it's only composed of one JavaScript source file.  It's also cross platform!
 
 ## Installing
 ```sh
-npm i easystore
+npm i smoothstore
 # OR
-yarn add easystore
+yarn add smoothstore
 ```
 
 ## Example
 ```js
-const { Datastore } = require('easystore');
+const { Datastore } = require('smoothstore');
 
 const myDatastore = new Datastore("APPLICATION_NAME", "SCOPE");
 let firstLaunch = myDatastore.get("first");
@@ -26,7 +26,7 @@ if (!firstLaunch) {
 ```
 **Or TypeScript:**
 ```ts
-import { Datastore } from 'easystore';
+import { Datastore } from 'SmoothStore';
 
 const myDatastore: Datastore = new Datastore("APPLICATION_NAME", "SCOPE");
 let firstLaunch: boolean | null = myDatastore.get("first");

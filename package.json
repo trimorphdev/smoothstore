@@ -1,6 +1,6 @@
 {
-  "name": "easystore",
-  "version": "1.0.0",
+  "name": "smoothstore",
+  "version": "1.0.1",
   "description": "An easy to use datastore framework for Node.js.",
   "main": "dist/index.js",
   "scripts": {
@@ -15,6 +15,10 @@
     "electron",
     "application"
   ],
+  "bugs": {
+    "url" : "https://github.com/zackenstien/smoothstore/issues"
+  },
+  "repository": "zackenstien/smoothstore",
   "author": "Zack Pace",
   "license": "MIT",
   "devDependencies": {
