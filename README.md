@@ -45,16 +45,16 @@ Creates and configures a new `Datastore` object.
 ### `Datastore.get(key: string): any`
 Returns the stored value with the name provided.  If it does not already exist, it returns `null`.
 
-### `Datastore.set(key: string, value: any)`
+### `Datastore.set(key: string, value: any): void`
 Sets a value with the name provided to the value provided.
 
 ### `Datastore.load(): object`
 Loads the datastore to memory.
 
-### `Datastore.save(): null`
+### `Datastore.save(): void`
 Writes the data stored in memory to a file.
 
-### `Datastore.watch(callback: Function)`
+### `Datastore.watch(callback: Function): void`
 Watches for changes in the datastore from the current running script.  It calls the `callback` with the key and value that were changed.
 
 ```js
@@ -63,5 +63,5 @@ datastore.watch((key, value) => {
 });
 ```
 
-### `Datastore.getStoreData()`
+### `Datastore.getStoreData(): object`
 Returns the data stored in the datastore's file (converted to an object).
