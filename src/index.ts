@@ -1,7 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as crypto from 'crypto';
 
-const start_path = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share");
+const start_path = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + '/.local/share');
+
+"use strict";
 
 export class Datastore {
     public data: object;
@@ -25,9 +28,6 @@ export class Datastore {
             this.path = path.join(this.path, scope + '.json');
         else
             this.path = path.join(this.path, '_default.json');
-    
-        if (!fs.existsSync(this.path))
-            fs.writeFileSync(this.path, '{}');
     }
 
     private callWatchers(key: string, value: string) {
@@ -43,7 +43,11 @@ export class Datastore {
      * @returns {object}
      */
     getStoreData() {
-        return require(this.path);
+        if (!fs.existsSync(this.path))
+            fs.writeFileSync(this.path, 'e30=');
+
+        let dat = Buffer.from(fs.readFileSync(this.path).toString(), 'base64').toString('ascii');
+        return JSON.parse(dat);
     }
 
     /**
@@ -59,7 +63,8 @@ export class Datastore {
      * Saves data to the store's file.
      */
     save() {
-        fs.writeFileSync(this.path, JSON.stringify(this.data));
+        let data = Buffer.from(JSON.stringify(this.data)).toString('base64');
+        fs.writeFileSync(this.path, data);
     }
 
     /**
